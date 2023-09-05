@@ -11,10 +11,10 @@ When you are done, please submit a link to your forked repo to the HR representa
 
 ## PS1: Virtual Coffee Shop (Full Stack)
 
-#### Task 1: Inventory Management REST API (NestJS)
+#### Task 1: Inventory Management REST API
 
 **Objective**:  
-Create a RESTful API with NestJS to manage a coffee shop's inventory. The coffee shop sells different types of coffee and also offers add-ons like milk, sugar, and flavors.
+Create a RESTful API to manage a coffee shop's inventory. The coffee shop sells different types of coffee and also offers add-ons like milk, sugar, and flavors.
 
 **Requirements**:
 
@@ -22,10 +22,10 @@ Create a RESTful API with NestJS to manage a coffee shop's inventory. The coffee
 - Implement CRUD operations for managing these entities.
 - Implement an endpoint to calculate the total price of a coffee order.
 
-#### Task 2: Coffee Customization UI (ReactJS)
+#### Task 2: Coffee Customization UI
 
 **Objective**:  
-Build a ReactJS application that allows customers to customize their coffee using the inventory data from the API.
+Build a frontend application that allows customers to customize their coffee using the inventory data from the API.
 
 **Requirements**:
 
@@ -42,22 +42,22 @@ Extend the API and the UI to support "Complex Orders" which consist of multiple 
 
 - Create an entity for `ComplexOrder` which can hold multiple coffees and their respective customizations.
 - Implement an API endpoint to place a `ComplexOrder`.
-- Update the ReactJS UI to allow placing `ComplexOrder` and show the total cost.
+- Update the UI to allow placing `ComplexOrder` and show the total cost.
 
 #### Bonus:
 
 - Secure the API endpoints using JWT-based authentication.
-- Use WebSockets to notify the ReactJS application in real-time when the inventory updates.
+- Use WebSockets to notify the frontend application in real-time when the inventory updates.
 - Implement end-to-end tests to validate the application functionality.
 
 ---
 
 ## PS2: Event Scheduler and Notifier (Full Stack)
 
-#### Task 1: Event Scheduling API (NestJS)
+#### Task 1: Event Scheduling API
 
 **Objective**:  
-Develop a RESTful API using NestJS for scheduling and managing events.
+Develop a RESTful API for scheduling and managing events.
 
 **Requirements**:
 
@@ -65,10 +65,10 @@ Develop a RESTful API using NestJS for scheduling and managing events.
 - Implement CRUD operations for managing `Event` entities.
 - Create an API endpoint that, given a time range, lists all events occurring within that period.
 
-#### Task 2: Event Management UI (ReactJS)
+#### Task 2: Event Management UI
 
 **Objective**:  
-Develop a ReactJS application that enables users to manage their events.
+Develop a frontend application that enables users to manage their events.
 
 **Requirements**:
 
@@ -84,10 +84,11 @@ Extend the API and the UI to send real-time notifications to users when an event
 **Requirements**:
 
 - Implement a real-time notification system using WebSockets or another real-time technology.
-- When an event is 10 minutes away from starting, a notification should appear in the ReactJS application.
+- When an event is 10 minutes away from starting, a notification should appear in the frontend application.
 
 #### Bonus:
 
 - Add the ability to mark events as "completed" or "cancelled" and reflect this status both in the API and UI.
 - Implement authentication and allow users to only manage their own events.
 - Write end-to-end tests to validate the entire functionality.
+
