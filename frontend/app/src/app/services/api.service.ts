@@ -24,7 +24,6 @@ export class ApiService {
 
   calTotalPrice(order: any): Observable<any> {
     const url = `${this.apiUrl}/api/calTotalPrice`;
-    // return this.http.post<AddOn[]>(url)
     return this.http.post<{ total: number }>(url, order)
   }
 }

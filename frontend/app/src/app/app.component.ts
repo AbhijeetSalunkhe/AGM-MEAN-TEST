@@ -41,12 +41,12 @@ export class AppComponent implements OnInit {
 
   calculate() {
     const order = {
-      coffeeId: this.selectedCoffeeType,
-      addons: [this.selectedAddOns]
+      coffeeId: this.selectedCoffeeType?.id ,
+      addons: [this.selectedAddOns?.id]
     };
 
-    // this.apiService.calTotalPrice().subscribe((res: any) => {
-    //   this.price = res;
-    // })
+    this.apiService.calTotalPrice(order).subscribe((res: any) => {
+      this.price = res.total;
+    })
   }
 }
