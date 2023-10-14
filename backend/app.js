@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const validation = require('./validation');
 const app = express();
 const port = process.env.PORT || 3000;
+const cors = require('cors');
 
 const server = http.createServer((req, res) => {
     // console.log("req", req)
@@ -14,14 +15,25 @@ app.listen(port, () => {
 })
 
 app.use(bodyParser.json());
+
+const allowedOrigins = ['http://localhost:4200'];
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
+}));
 /** ============================================================================================= */
 let coffee = [];
 
-app.get('/coffee', (req, res) => {
+app.get('/api/coffee', (req, res) => {
     res.json(coffee);
 });
 
-app.post('/coffee', (req, res) => {
+app.post('/api/coffee', (req, res) => {
     try {
         // let coffee = []; 
         // console.log("coffee req=", req)
@@ -39,7 +51,7 @@ app.post('/coffee', (req, res) => {
     }
 });
 
-app.get('/coffee/:id', (req, res) => {
+app.get('/api/coffee/:id', (req, res) => {
     console.log("req.params.id", req.params.id)
     const isCoffee = coffee.find((c) => c.id == req.params.id);
     if (!isCoffee) {
@@ -51,7 +63,7 @@ app.get('/coffee/:id', (req, res) => {
     }
 });
 
-app.put('/coffee/:id', (req, res) => {
+app.put('/api/coffee/:id', (req, res) => {
     const updatedCoffee = req.body;
     const index = coffee.findIndex((c) => c.id == req.params.id);
     if (index === -1) {
@@ -64,7 +76,7 @@ app.put('/coffee/:id', (req, res) => {
     }
 });
 
-app.delete('/coffee/:id', (req, res) => {
+app.delete('/api/coffee/:id', (req, res) => {
     const index = coffee.findIndex((c) => c.id == req.params.id);
     if (index === -1) {
         res.status(404).json({
@@ -79,11 +91,11 @@ app.delete('/coffee/:id', (req, res) => {
 /** ============================================================================================= */
 let addon = [];
 
-app.get('/addon', (req, res) => {
+app.get('/api/addon', (req, res) => {
     res.json(addon);
 });
 
-app.post('/addon', (req, res) => {
+app.post('/api/addon', (req, res) => {
     try {
         const newAddon = req.body;
         console.log("newAddon", newAddon)
@@ -99,7 +111,7 @@ app.post('/addon', (req, res) => {
     }
 });
 
-app.get('/addon/:id', (req, res) => {
+app.get('/api/addon/:id', (req, res) => {
     console.log("req.params.id", req.params.id)
     const isaAddon = addon.find((c) => c.id == req.params.id);
     if (!isAddon) {
@@ -111,7 +123,7 @@ app.get('/addon/:id', (req, res) => {
     }
 });
 
-app.put('/addon/:id', (req, res) => {
+app.put('/api/addon/:id', (req, res) => {
     const updatedAddon = req.body;
     const index = addon.findIndex((c) => c.id == req.params.id);
     if (index === -1) {
@@ -124,7 +136,7 @@ app.put('/addon/:id', (req, res) => {
     }
 });
 
-app.delete('/addon/:id', (req, res) => {
+app.delete('/api/addon/:id', (req, res) => {
     const index = addon.findIndex((c) => c.id == req.params.id);
     if (index === -1) {
         res.status(404).json({
@@ -137,7 +149,7 @@ app.delete('/addon/:id', (req, res) => {
 });
 /** ============================================================================================= */
 
-app.post('/calTotalPrice', (req, res) => {
+app.post('/api/calTotalPrice', (req, res) => {
     const { coffeeId, addons } = req.body;
   
     const selectedCoffeeType = coffee.find((c) => c.id == coffeeId);
